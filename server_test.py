@@ -20,7 +20,7 @@ def index():
             <ol>
                 {liTags}
             </ol>
-            <h2>Welcome</hs>
+            <h2>Welcome</h2>
             Hello, Web
         </body>
     </html>
@@ -34,7 +34,5 @@ def create():
 def read(id):
     return 'Read ' + id
 
-
-app.run(port=5001)
-app.run(debug=True)
-# py 명령어로 실행
+if __name__ == '__main__':
+    app.run()
