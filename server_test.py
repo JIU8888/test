@@ -30,9 +30,30 @@ def index():
 def create():
     return 'Create'
 
-@app.route('/read/<id>/')
+@app.route('/read/<int:id>/')
 def read(id):
-    return 'Read ' + id
+    liTag = ''
+    for topic in topics:
+        liTags = liTags + f'<li><a href="/read/{topic["id"]}/">{topic["title"]}</a></li>'
+    title = ''
+    body = ''
+    for topic in topics:
+        if id == topic['id']:
+            title = topic['title']
+            body = topic['body']
+            break
+    return f'''<!doctype html>
+    <html>
+        <body>
+            <h1><a href="/">WEB</a></h1>
+            <ol>
+                {liTags}
+            </ol>
+            <h2>{title}</h2>
+            {body}
+        </body>
+    </html>
+    '''
 
 if __name__ == '__main__':
     app.run()
