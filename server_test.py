@@ -20,13 +20,16 @@ def template(contents. content):
         </body>
     </html>
     '''
-
-@app.route('/')
-def index():
+def getContents():
     liTags = ''
     for topic in topics:
         liTags = liTags + f'<li><a href="/read/{topic["id"]}/">{topic["title"]}</a></li>'
-    return template(liTags, '<h2>Welcome</h2>Hello, WEB')
+    return liTags
+
+@app.route('/')
+def index():
+    return template(getContents(), '<h2>Welcome</h2>Hello, WEB')
+
 
 @app.route('/create/')
 def create():
@@ -34,9 +37,6 @@ def create():
 
 @app.route('/read/<int:id>/')
 def read(id):
-    liTags = ''
-    for topic in topics:
-        liTags = liTags + f'<li><a href="/read/{topic["id"]}/">{topic["title"]}</a></li>'
     title = ''
     body = ''
     for topic in topics:
@@ -44,7 +44,7 @@ def read(id):
             title = topic['title']
             body = topic['body']
             break
-    return template(liTags, f'<h2>{title}</h2>{body}')
+    return template(getContents(), f'<h2>{title}</h2>{body}')
 
 if __name__ == '__main__':
     app.run()
