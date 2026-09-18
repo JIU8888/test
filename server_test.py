@@ -8,23 +8,25 @@ topics = [
     {'id': 3, 'title': '슝슝이', 'body': '슝슝이 is 이히힝'}
 ]
 
-@app.route('/')
-def index():
-    liTags = ''
-    for topic in topics:
-        liTags = liTags + f'<li><a href="/read/{topic["id"]}/">{topic["title"]}</a></li>'
+def template(contents. content):
     return f'''<!doctype html>
     <html>
         <body>
             <h1><a href="/">WEB</a></h1>
             <ol>
-                {liTags}
+                {contents}
             </ol>
-            <h2>Welcome</h2>
-            Hello, Web
+            {content}
         </body>
     </html>
     '''
+
+@app.route('/')
+def index():
+    liTags = ''
+    for topic in topics:
+        liTags = liTags + f'<li><a href="/read/{topic["id"]}/">{topic["title"]}</a></li>'
+    return template(liTags, '<h2>Welcome</h2>Hello, WEB')
 
 @app.route('/create/')
 def create():
@@ -42,18 +44,7 @@ def read(id):
             title = topic['title']
             body = topic['body']
             break
-    return f'''<!doctype html>
-    <html>
-        <body>
-            <h1><a href="/">WEB</a></h1>
-            <ol>
-                {liTags}
-            </ol>
-            <h2>{title}</h2>
-            {body}
-        </body>
-    </html>
-    '''
+    return template(liTags, f'<h2>{title}</h2>{body}')
 
 if __name__ == '__main__':
     app.run()
