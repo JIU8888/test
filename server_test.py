@@ -32,7 +32,7 @@ def create():
 
 @app.route('/read/<int:id>/')
 def read(id):
-    liTag = ''
+    liTags = ''
     for topic in topics:
         liTags = liTags + f'<li><a href="/read/{topic["id"]}/">{topic["title"]}</a></li>'
     title = ''
