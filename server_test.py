@@ -3,9 +3,9 @@ from flask import Flask
 app = Flask(__name__)
 
 topics = [
-    {'id': 1, 'title': 'html', 'body': 'html is ...'},
-    {'id': 2, 'title': 'css', 'body': 'css is ...'},
-    {'id': 3, 'title': 'javascript', 'body': 'javascript is ...'}
+    {'id': 1, 'title': '고양이', 'body': '고양이 is 먀먀먀먀'},
+    {'id': 2, 'title': '오리', 'body': '오리 is 엥모야'},
+    {'id': 3, 'title': '슝슝이', 'body': '슝슝이 is 히힝이'}
 ]
 
 @app.route('/')
