@@ -8,7 +8,7 @@ topics = [
     {'id': 3, 'title': '슝슝이', 'body': '슝슝이 is 이히힝'}
 ]
 
-def template(contents. content):
+def template(contents, content):
     return f'''<!doctype html>
     <html>
         <body>
